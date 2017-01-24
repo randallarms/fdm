@@ -1,12 +1,12 @@
-// ========================================================================
-// |FUNNY DEATH MESSAGES v1.0
-// | by Kraken | https://www.spigotmc.org/resources
+// ==========================================================================
+// |FUNNY DEATH MESSAGES v1.0.1
+// | by Kraken | https://www.spigotmc.org/resources/funnydeathmessages.35291/
 // | code inspired by various Bukkit & Spigot devs -- thank you. 
 // |
 // | Always free & open-source! If this plugin is being sold or re-branded,
 // | please let me know on the SpigotMC site, or wherever you can. Thanks!
-// | Source code: https://github.com/randallarms
-// ========================================================================
+// | Source code: https://github.com/randallarms/fdm
+// ==========================================================================
 
 package com.kraken.funnydeathmessages;
 

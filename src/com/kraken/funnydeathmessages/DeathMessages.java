@@ -238,7 +238,6 @@ public class DeathMessages {
 				
 		}
 		
-		player.sendMessage(damager);
 		return message;
 		
 	}
