@@ -66,7 +66,9 @@ public class FDMListener implements Listener {
 		
 		Player player = (Player) e.getEntity();
 		
-		e.setDeathMessage( format( deathMsgGen(player) ) );
+		if ( plugin.enabled() ) {
+			e.setDeathMessage( format( deathMsgGen(player) ) );
+		}
 		
 	}
 	
