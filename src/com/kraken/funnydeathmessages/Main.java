@@ -49,14 +49,21 @@ public class Main extends JavaPlugin {
         enabled = getConfig().getBoolean("enabled");
         opRequired = getConfig().getBoolean("opRequired");
         
-  	  //Initialize the messages config with a dummy value
+  	  //Initialize the messages config
         if ( !messages.getBoolean("loaded") ) {
-        	messages.set("loaded", true);
+        	
+        	File msgFile = new File(getDataFolder(), "messages.yml");
+        	if ( !msgFile.exists() ) {
+        	    saveResource("messages.yml", false);
+        	}
+        	YamlConfiguration msg = YamlConfiguration.loadConfiguration(msgFile);
+        	
         	try {
-            	messages.save(messagesFile);
+            	msg.save(msgFile);
     		} catch (IOException ioe1) {
     			System.out.println("Could not properly initialize FunnyDeathMessages messages.yml file, expect possible errors.");
     		}
+        	
         }
 		
     }
