@@ -10,14 +10,22 @@
 
 package com.kraken.funnydeathmessages;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
+	
+    private File messagesFile = new File("plugins/FunnyDeathMessages", "messages.yml");
+    private FileConfiguration messages = YamlConfiguration.loadConfiguration(messagesFile);
 	
 	boolean opRequired = true;
 	boolean enabled = true;
@@ -37,9 +45,19 @@ public class Main extends JavaPlugin {
         	getConfig().set("opRequired", true);
         	saveConfig();
         }
-
+        
         enabled = getConfig().getBoolean("enabled");
         opRequired = getConfig().getBoolean("opRequired");
+        
+  	  //Initialize the messages config with a dummy value
+        if ( !messages.getBoolean("loaded") ) {
+        	messages.set("loaded", true);
+        	try {
+            	messages.save(messagesFile);
+    		} catch (IOException ioe1) {
+    			System.out.println("Could not properly initialize FunnyDeathMessages messages.yml file, expect possible errors.");
+    		}
+        }
 		
     }
     
@@ -64,48 +82,89 @@ public class Main extends JavaPlugin {
       //Player commands
         if ( sender instanceof Player ) {
         	
-        	switch (command) {
+        	if ( opRequired && !player.isOp() ) {
+        		
+	        	switch (command) {
+	        	
+					  //Command: fdm
+		        	    case "fdm":
+		        			  
+		        	    	switch (args.length) {
+		        	    	
+		        	    		case 1:
+		        	    			switch ( args[0].toLowerCase() ) {
+		        	    				case "on":
+		        	    				case "enable":
+		        	    				case "true":
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
+		        	    					enabled = true;
+		        	    					getConfig().set("enabled", true);
+		        	    					saveConfig();
+		        	    					return true;
+		        	    				case "off":
+		        	    				case "disable":
+		        	    				case "false":
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
+		        	    					enabled = false;
+		        	    					getConfig().set("enabled", false);
+		        	    					saveConfig();
+		        	    					return true;
+		        	    				default:
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Try entering \"/fdm <on/off>\"");
+		        	    					return true;
+		        	    			}
+		        	    		
+		        	    		case 2:
+		        	    			switch ( args[0].toLowerCase() ) {
+		        	    			
+			        	    			case "opReq":
+			        	    			case "opreq":
+			        	    			case "opRequired":
+			        	    			case "oprequired":
+		        	    				
+				        	    			switch ( args[1].toLowerCase() ) {
+				        	    				case "on":
+				        	    				case "enable":
+				        	    				case "true":
+				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
+				        	    					enabled = true;
+				        	    					getConfig().set("opRequired", true);
+				        	    					saveConfig();
+				        	    					return true;
+				        	    				case "off":
+				        	    				case "disable":
+				        	    				case "false":
+				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
+				        	    					enabled = false;
+				        	    					getConfig().set("opRequired", false);
+				        	    					saveConfig();
+				        	    					return true;
+				        	    			}
+			        	    			
+		        	    				default:
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Try entering \"/fdm opReq <on/off>\"");
+		        	    					return true;
+		        	    			}
+		        	    			
+		        	    		default:
+		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.1)");
+		        	    			return true;
+		        	    	
+		        	    	}
+		        	    	
+					    default:
+					    	  
+					        player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | " + "Command not recognized.");
+					        return true;
+					        
+		        }
         	
-			  //Command: fdm
-        	    case "fdm":
-        			  
-        	    	switch (args.length) {
-        	    	
-        	    		case 1:
-        	    			switch ( args[0].toLowerCase() ) {
-        	    				case "on":
-        	    				case "enable":
-        	    				case "true":
-        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
-        	    					enabled = true;
-        	    					getConfig().set("enabled", true);
-        	    					saveConfig();
-        	    					return true;
-        	    				case "off":
-        	    				case "disable":
-        	    				case "false":
-        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
-        	    					enabled = false;
-        	    					getConfig().set("enabled", false);
-        	    					saveConfig();
-        	    					return true;
-        	    				default:
-        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.1)");
-        	    					return true;
-        	    			}
-        	    		default:
-        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.1)");
-        	    			return true;
-        	    	
-        	    	}
-        	        
-			        
-			    default:
-			    	  
-			        player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | " + "Command not recognized.");
-			        return true;
-			    
-	        }
+        	} else {
+        		
+        		player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | You have insufficient privileges to use this command.");
+    			return true;
+        		
+        	}
         
         }
         
