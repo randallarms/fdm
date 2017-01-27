@@ -1,127 +1,121 @@
 loaded: true
 ARROW:
-    message: " has taken an arrow to the knee!"
+    message: "%s has taken an arrow to the knee!"
 BLAZE:
-    message: " got blazed."
+    message: "%s got blazed."
 BLOCK_EXPLOSION:
-    message: " has been blown up into a million teeny-tiny pieces!"
+    message: "%s has been blown up into a million teeny-tiny pieces!"
 CAVE_SPIDER:
-    message: " is currently being dragged into some dank cave-spider lair! Weeeee!"
+    message: "%s is currently being dragged into some dank cave-spider lair! Weeeee!"
 CONTACT:
-    message: " has been given a total cactus-needle probing!"
+    message: "%s has been given a total cactus-needle probing!"
 CRAMMING:
-    message: " was annihilated from the fabric of space-time in a mass-collision event!"
+    message: "%s was annihilated from the fabric of space-time in a mass-collision event!"
 CREEPER:
-    message: " met a creeper and was turned into a fine mist!"
+    message: "%s met a creeper and was turned into a fine mist!"
 CUSTOM:
-    message: "I'm not even really sure what killed "
-    message2: " that time!"
+    message: "I'm not even really sure what killed %s that time!"
 DRAGON_BREATH:
-    message: " was cooked well-done by a dragon. Dinner time!"
+    message: "%s was cooked well-done by a dragon. Dinner time!"
 DRAGON_FIREBALL:
-    message: " was cooked well-done by a dragon. Dinner time!"
+    message: "%s was cooked well-done by a dragon. Dinner time!"
 DROWNING:
-    message: " is now sleepin' with da fishes."
+    message: "%s is now sleepin' with da fishes."
 ELDER_GUARDIAN:
-    message: " tried sleepin' with da fishes, but was eaten instead!"
+    message: "%s tried sleepin' with da fishes, but was eaten instead!"
 ENDER_DRAGON:
-    message: " was cooked well-done by a dragon. Dinner time!"
+    message: "%s was cooked well-done by a dragon. Dinner time!"
 ENDERMAN:
-    message: " looked the wrong way at some tall, creepy dude!"
+    message: "%s looked the wrong way at some tall, creepy dude!"
 ENDERMITE:
-    message: " was killed by smallest hostile mob in the entire game, congratulations!"
+    message: "%s was killed by smallest hostile mob in the entire game, congratulations!"
 ENTITY_EXPLOSION:
-    message: " met a creeper and was turned into a fine mist!"
+    message: "%s met a creeper and was turned into a fine mist!"
 FALL:
-    message: " is now ready to be mopped up off the floor!"
+    message: "%s is now ready to be mopped up off the floor!"
 FALLING_BLOCK:
-    message: " got beaned in the noggin from above!"
+    message: "%s got beaned in the noggin from above!"
 FIRE:
-    message: " tried to play with fire!"
+    message: "%s tried to play with fire!"
 FIRE_TICK:
-    message: " was set ablaze and immolated!"
+    message: "%s was set ablaze and immolated!"
 FIRE_BALL:
-    message: " discovered how many licks it takes to get to the center of a fireball!"
+    message: "%s discovered how many licks it takes to get to the center of a fireball!"
 FLY_INTO_WALL:
-    message: " has been turned into a pancake by velocity... EXTREEEEME!"
+    message: "%s has been turned into a pancake by velocity... EXTREEEEME!"
 GHAST:
-    message: " has just been left a-GHAST by his plight! Get it? Ghast?! Aha.. ha.. ugh.."
+    message: "%s has just been left a-GHAST by his plight! Get it? Ghast?! Aha.. ha.. ugh.."
 GUARDIAN:
-    message: " tried sleepin' with da fishes, but was eaten instead!"
+    message: "%s tried sleepin' with da fishes, but was eaten instead!"
 HOT_FLOOR:
-    message: " decided to take a stroll out on a bed of magma!"
+    message: "%s decided to take a stroll out on a bed of magma!"
 IRON_GOLEM:
-    message: " picked a fight with a golem twice their size and made of metal. Well done!"
+    message: "%s picked a fight with a golem twice their size and made of metal. Well done!"
 LAVA:
-    message: " has discovered that, literally, the floor is now lava!"
+    message: "%s has discovered that, literally, the floor is now lava!"
 LIGHTNING:
-    message: " has been struck by lightning and turned into a superhero!"
+    message: "%s has been struck by lightning and turned into a superhero!"
 LLAMA:
-    message: "The llamas have turned on "
-    message2: "!"
+    message: "The llamas have turned on %s!"
 LLAMA_SPIT:
-    message: "The llamas have turned on "
-    message2: "!"
+    message: "The llamas have turned on %s!"
 MAGIC:
-    message: "Yer a wizzerd, "
-    message2: "!"
+    message: "Yer a wizzerd, %s!"
 MAGMA_CUBE:
-    message: " was assimilated into a magma cube!"
+    message: "%s was assimilated into the magma cube!"
 MELTING:
-    message: " is apparently a snowman and has melted, who knew?"
+    message: "% sis apparently a snowman and has melted, who knew?"
 PIG_ZOMBIE:
-    message: " is about to have a really hard time in the Nether!"
+    message: "%s is about to have a really hard time in the Nether!"
 PLAYER:
-    message: " just got a straight-up slap-down whack-a-mole bee-bop doo-wop boppin' on the noodle-noggin', yo!"
+    message: "%s just got a straight-up slap-down whack-a-mole bee-bop doo-wop boppin' on the noodle-noggin', yo!"
 POISON:
-    message: " has suffered a slow and terrible death by poisoning -- the death of choice by historic emperors!"
+    message: "%s has suffered a slow and terrible death by poisoning -- the death of choice by historic emperors!"
 POLAR_BEAR:
-    message: " lost a round of fisticuffs with a polar bear!"
+    message: "%s lost a round of fisticuffs with a polar bear!"
 PROJECTILE:
-    message: " just learned a hard lesson about standing in a projectile's trajectory!"
+    message: "%s just learned a hard lesson about standing in a projectile's trajectory!"
 SHULKER:
-    message: " ate lead! ...or whatever it is that shulkers shoot!"
+    message: "%s ate lead! ...or whatever it is that shulkers shoot!"
 SHULKER_BULLET:
-    message: " ate lead! ...or whatever it is that shulkers shoot!"
+    message: "%s ate lead! ...or whatever it is that shulkers shoot!"
 SILVERFISH:
-    message: " is now raging at Monster Eggs!"
+    message: "%s is now raging at Monster Eggs!"
 SKELETON:
-    message: " got 2spooped by mr. skeltal! doot doot!"
+    message: "%s got 2spooped by mr. skeltal! doot doot!"
 SKELETON_HORSE:
-    message: " got 2spooped by mr. skeltal! doot doot!"
+    message: "%s got 2spooped by mr. skeltal! doot doot!"
 SLIME:
-    message: " was assimilated into the Blob!"
+    message: "%s was assimilated into the Blob!"
 SPIDER:
-    message: " was eaten by their friendly neighborhood spider, man!"
+    message: "%s was eaten by their friendly neighborhood spider, man!"
 STARVATION:
-    message: " needs to eat a Snickers!"
+    message: "%s needs to eat a Snickers!"
 SUFFOCATION:
-    message: "Don't forget to breath, "
-    message2: "!"
+    message: "Don't forget to breath, %s!"
 SUICIDE:
-    message: "Screw you guys; "
-    message2: " is going home."
+    message: "Screw you guys; %s is going home."
 THORNS:
-    message: " was turned into swiss cheese by the thorns of their enemies!"
+    message: "%s was turned into swiss cheese by the thorns of their enemies!"
 VEX:
-    message: " got their butt kicked by a little flying fairy thing-a-majig! HA!"
+    message: "%s got their butt kicked by a little flying fairy thing-a-majig! HA!"
 VINDICATOR:
-    message: " got vindicated!"
+    message: "%s got vindicated!"
 VOID:
-    message: " tried to explore the vast unknown, with little success!"
+    message: "%s tried to explore the vast unknown, with little success!"
 WITCH:
-    message: " stood on the wrong side of someone's Avada Kedavra!"
+    message: "%s stood on the wrong side of someone's Avada Kedavra!"
 WITHER:
-    message: " has been withered away to a husk by some horrible curse! Yaaay!"
+    message: "%s has been withered away to a husk by some horrible curse! Yaaay!"
 WITHER_SKELETON:
-    message: " has been withered away to a husk by some horrible curse! Yaaay!"
+    message: "%s has been withered away to a husk by some horrible curse! Yaaay!"
 WOLF:
-    message: " is now dogmeat!"
+    message: "%s is now dogmeat!"
 ZOMBIE:
-    message: " is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
+    message: "%s is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
 ZOMBIE_HORSE:
-    message: " is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
+    message: "%s is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
 ZOMBIE_VILLAGER:
-    message: " is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
+    message: "%s is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
 DEFAULT:
-    message: " has died mysteriously and without a trace!"
+    message: "%s has died mysteriously and without a trace!"
