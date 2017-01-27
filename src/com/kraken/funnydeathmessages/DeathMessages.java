@@ -12,6 +12,12 @@ public class DeathMessages {
 		
 	}
 	
+	public static String fdmFormat(String msg, Player player){
+		
+	    return String.format( msg, player.getName() );
+	    
+    }
+	
 	public String getMessage(Player player, String damager){
 		
 	    File messagesFile = new File("plugins/FunnyDeathMessages", "messages.yml");
@@ -80,19 +86,13 @@ public class DeathMessages {
 			case "ZOMBIE":
 			case "ZOMBIE_HORSE":
 			case "ZOMBIE_VILLAGER":
-				if ( messages.getString(damager + ".message2") == null ) {
-					message = ( player.getName() + messages.getString(damager + ".message") );
-				} else {
-					message = ( messages.getString(damager + ".message") + player.getName() + messages.getString(damager + ".message2") );
-				}
+				
+				message = ( fdmFormat(messages.getString(damager + ".message"), player) );
 				break;
 				
 			default:
-				if ( messages.getString("DEFAULT.message2").equals(null) ) {
-					message = ( player.getName() + messages.getString(damager + ".message") );
-				} else {
-					message = ( messages.getString("DEFAULT.message") + player.getName() + messages.getString(damager + ".message2") );
-				}
+				
+				message = ( fdmFormat(messages.getString("DEFAULT.message"), player) );
 				break;
 				
 		}
