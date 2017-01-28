@@ -27,6 +27,7 @@ public class DeathMessages {
 		
 		switch ( damager ) {
 		
+			case "AREA_EFFECT_CLOUD":
 			case "ARROW":
 			case "BLAZE":
 			case "BLOCK_EXPLOSION":

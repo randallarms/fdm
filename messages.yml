@@ -1,4 +1,6 @@
 loaded: true
+AREA_EFFECT_CLOUD:
+    message: "%s, DON'T STAND IN THE FIRE! 50 DKP MINUS!!!"
 ARROW:
     message: "%s has taken an arrow to the knee!"
 BLAZE:
