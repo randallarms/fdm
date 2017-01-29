@@ -1,5 +1,5 @@
 // ==========================================================================
-// |FUNNY DEATH MESSAGES v1.3
+// |FUNNY DEATH MESSAGES v1.4
 // | by Kraken | https://www.spigotmc.org/resources/funnydeathmessages.35291/
 // | code inspired by various Bukkit & Spigot devs -- thank you. 
 // |
@@ -65,19 +65,6 @@ public class Main extends JavaPlugin {
     		}
         	
         }
-        
-    	  //Initialize the messages config
-        if ( messages.getString("AREA_EFFECT_CLOUD.message") == null ) {
-        	
-    	    messages.set("AREA_EFFECT_CLOUD.message", "%s, DON'T STAND IN THE FIRE! 50 DKP MINUS!!!");
-    	    
-        	try {
-            	messages.save(messagesFile);
-    		} catch (IOException ioe2) {
-    			System.out.println("Could not properly initialize FunnyDeathMessages message for 'AREA_EFFECT_CLOUD'.");
-    		}
-        	
-        } 
 		
     }
     
@@ -102,7 +89,7 @@ public class Main extends JavaPlugin {
       //Player commands
         if ( sender instanceof Player ) {
         	
-        	if ( opRequired && !player.isOp() ) {
+        	if ( !opRequired || ( opRequired && player.isOp() ) ) {
         		
 	        	switch (command) {
 	        	
@@ -147,7 +134,7 @@ public class Main extends JavaPlugin {
 				        	    				case "enable":
 				        	    				case "true":
 				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
-				        	    					enabled = true;
+				        	    					opRequired = true;
 				        	    					getConfig().set("opRequired", true);
 				        	    					saveConfig();
 				        	    					return true;
@@ -155,7 +142,7 @@ public class Main extends JavaPlugin {
 				        	    				case "disable":
 				        	    				case "false":
 				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
-				        	    					enabled = false;
+				        	    					opRequired = true;
 				        	    					getConfig().set("opRequired", false);
 				        	    					saveConfig();
 				        	    					return true;
@@ -167,7 +154,7 @@ public class Main extends JavaPlugin {
 		        	    			}
 		        	    			
 		        	    		default:
-		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.3)");
+		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.4)");
 		        	    			return true;
 		        	    	
 		        	    	}
