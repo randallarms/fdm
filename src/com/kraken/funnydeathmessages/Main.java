@@ -65,19 +65,6 @@ public class Main extends JavaPlugin {
     		}
         	
         }
-        
-    	  //Initialize the messages config
-        if ( messages.getString("AREA_EFFECT_CLOUD.message") == null ) {
-        	
-    	    messages.set("AREA_EFFECT_CLOUD.message", "%s, DON'T STAND IN THE FIRE! 50 DKP MINUS!!!");
-    	    
-        	try {
-            	messages.save(messagesFile);
-    		} catch (IOException ioe2) {
-    			System.out.println("Could not properly initialize FunnyDeathMessages message for 'AREA_EFFECT_CLOUD'.");
-    		}
-        	
-        } 
 		
     }
     
