@@ -121,3 +121,5 @@ ZOMBIE_VILLAGER:
     message: "%s is now experiencing a strong craving.. for.. for braaains.. BRAAAAAAAAINNNSSS!!"
 DEFAULT:
     message: "%s has died mysteriously and without a trace!"
+TRIPLE:
+    message: "Yee-haw! Someone's on a dying spree!"
