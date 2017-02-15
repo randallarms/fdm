@@ -17,6 +17,7 @@ public class FDMListener implements Listener {
 	Main plugin;
 	
 	WeakHashMap<Player, String> damages = new WeakHashMap<Player, String>();
+	WeakHashMap<Player, Integer> deathCount = new WeakHashMap<Player, Integer>();
 	
 	public FDMListener(Main plugin) {
 		
@@ -67,7 +68,27 @@ public class FDMListener implements Listener {
 		Player player = (Player) e.getEntity();
 		
 		if ( plugin.enabled() ) {
+			
+			Integer deaths = deathCount.get(player);
+			if ( deaths == null ) {
+				deathCount.put(player, 1);
+			} else {
+				deathCount.put(player, deaths + 1);
+			}
+			
+			plugin.getServer().getScheduler().scheduleSyncDelayedTask( plugin, new Runnable() {
+
+	            public void run() {
+
+	            	Integer deaths = deathCount.get(player);
+	            	deathCount.put(player, deaths - 1);
+	                
+	            }
+
+	        }, 6000 );
+			
 			e.setDeathMessage( format( deathMsgGen(player) ) );
+			
 		}
 		
 	}
@@ -82,8 +103,13 @@ public class FDMListener implements Listener {
 		
 		String damager = damages.get(player);
 		DeathMessages dm = new DeathMessages();
+		Integer deaths = deathCount.get(player);
 		
-		return dm.getMessage(player, damager);
+		if ( deaths == 3 ) {
+			return dm.getSpreeMessage(player, damager, deaths);
+		} else {
+			return dm.getMessage(player, damager);
+		}
 		
 	}
       
