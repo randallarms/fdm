@@ -87,7 +87,7 @@ public class FDMListener implements Listener {
 
 	        }, 6000 );
 			
-			e.setDeathMessage( format( deathMsgGen(player) ) );
+			e.setDeathMessage( format( plugin.getDefColor() + deathMsgGen(player) ) );
 			
 		}
 		
