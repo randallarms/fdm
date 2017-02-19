@@ -30,6 +30,9 @@ public class Main extends JavaPlugin {
 	boolean opRequired = true;
 	boolean enabled = true;
 	
+	//default color code for messages
+	String defColor = "&6";
+	
 	@Override
     public void onEnable() {
     	
@@ -46,8 +49,14 @@ public class Main extends JavaPlugin {
         	saveConfig();
         }
         
+        if ( getConfig().getString("defColor") == null ) {
+        	getConfig().set("defColor", "&6");
+        	saveConfig();
+        }
+        
         enabled = getConfig().getBoolean("enabled");
         opRequired = getConfig().getBoolean("opRequired");
+        defColor = getConfig().getString("defColor");
         
   	  //Initialize the messages config
         if ( !messages.getBoolean("loaded") ) {
@@ -80,6 +89,17 @@ public class Main extends JavaPlugin {
     	return enabled;
     }
     
+  //Get the default color for messages
+    public String getDefColor() {
+    	return defColor;
+    }
+    
+  //Set the default color for messages 
+    public void setDefColor(Player player, String[] args) {
+    	getConfig().set("defColor", defColor);
+    	saveConfig();
+    }
+    
   //FDM commands
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -103,7 +123,8 @@ public class Main extends JavaPlugin {
 		        	    				case "on":
 		        	    				case "enable":
 		        	    				case "true":
-		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.GREEN 
+		        	    											+ "enabled" + ChatColor.GRAY + "!");
 		        	    					enabled = true;
 		        	    					getConfig().set("enabled", true);
 		        	    					saveConfig();
@@ -111,7 +132,8 @@ public class Main extends JavaPlugin {
 		        	    				case "off":
 		        	    				case "disable":
 		        	    				case "false":
-		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages " + ChatColor.RED 
+		        	    											+ "disabled" + ChatColor.GRAY + "!");
 		        	    					enabled = false;
 		        	    					getConfig().set("enabled", false);
 		        	    					saveConfig();
@@ -133,7 +155,8 @@ public class Main extends JavaPlugin {
 				        	    				case "on":
 				        	    				case "enable":
 				        	    				case "true":
-				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.GREEN + "enabled" + ChatColor.GRAY + "!");
+				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.GREEN 
+				        	    										+ "enabled" + ChatColor.GRAY + "!");
 				        	    					opRequired = true;
 				        	    					getConfig().set("opRequired", true);
 				        	    					saveConfig();
@@ -141,20 +164,71 @@ public class Main extends JavaPlugin {
 				        	    				case "off":
 				        	    				case "disable":
 				        	    				case "false":
-				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.RED + "disabled" + ChatColor.GRAY + "!");
+				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's 'op' requirement " + ChatColor.RED 
+				        	    										+ "disabled" + ChatColor.GRAY + "!");
 				        	    					opRequired = true;
 				        	    					getConfig().set("opRequired", false);
 				        	    					saveConfig();
 				        	    					return true;
 				        	    			}
 			        	    			
+			        	    			case "color":
+			        	    				
+			        	    				String oldColor = defColor;
+			        	    				
+			        	    				switch ( args[1].toLowerCase() ) {
+				        	    				case "darkred":
+				        	    					defColor = "&4";
+				        	    				case "red":
+				        	    					defColor = "&c";
+				        	    				case "orange":
+				        	    					defColor = "&6";
+				        	    				case "yellow":
+				        	    					defColor = "&e";
+				        	    				case "green":
+				        	    					defColor = "&2";
+				        	    				case "lime":
+				        	    					defColor = "&a";
+				        	    				case "aqua":
+				        	    					defColor = "&b";
+				        	    				case "darkaqua":
+				        	    					defColor = "&3";
+				        	    				case "darkblue":
+				        	    					defColor = "&1";
+				        	    				case "blue":
+				        	    					defColor = "&9";
+				        	    				case "lightpurple":
+				        	    					defColor = "&d";
+				        	    				case "darkpurple":
+				        	    					defColor = "&5";
+				        	    				case "white":
+				        	    					defColor = "&6";
+				        	    				case "lightgray":
+				        	    					defColor = "&7";
+				        	    				case "darkgray":
+				        	    					defColor = "&8";
+				        	    				case "black":
+				        	    					defColor = "&0";
+				        	    				default:
+				        	    					setDefColor(player, args);
+				        	    					if ( !defColor.equals(oldColor) ) {
+					        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's default message color is now set to " 
+					        	    										+ args[1] + ".");
+				        	    					} else {
+				        	    						player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | Color not recognized!");
+				        	    					}
+				        	    					return true;
+			        	    				}
+			        	    				
+			        	    			
 		        	    				default:
-		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Try entering \"/fdm opReq <on/off>\"");
+		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Argument not recognized.\"");
 		        	    					return true;
 		        	    			}
 		        	    			
 		        	    		default:
-		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.6)");
+		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY 
+		        	    								+ " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.6)");
 		        	    			return true;
 		        	    	
 		        	    	}
