@@ -1,5 +1,5 @@
 // ==========================================================================
-// |FUNNY DEATH MESSAGES v1.6
+// |FUNNY DEATH MESSAGES v1.6.1
 // | by Kraken | https://www.spigotmc.org/resources/funnydeathmessages.35291/
 // | code inspired by various Bukkit & Spigot devs -- thank you. 
 // |
@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
 	boolean enabled = true;
 	
 	//default color code for messages
-	String defColor = "&6";
+	String defColor = "&f";
 	
 	@Override
     public void onEnable() {
@@ -94,10 +94,21 @@ public class Main extends JavaPlugin {
     	return defColor;
     }
     
+  //Default color changed message
+    public void notifyColorChange(Player player, String[] args) {
+    	
+    	player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's default message color is now set to " 
+				+ args[1] + ".");
+    	
+    }
+    
   //Set the default color for messages 
     public void setDefColor(Player player, String[] args) {
+    	
+    	notifyColorChange(player, args);
     	getConfig().set("defColor", defColor);
     	saveConfig();
+    	
     }
     
   //FDM commands
@@ -174,52 +185,78 @@ public class Main extends JavaPlugin {
 			        	    			
 			        	    			case "color":
 			        	    				
-			        	    				String oldColor = defColor;
-			        	    				
 			        	    				switch ( args[1].toLowerCase() ) {
+			        	    		    	
 				        	    				case "darkred":
 				        	    					defColor = "&4";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "red":
 				        	    					defColor = "&c";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "orange":
 				        	    					defColor = "&6";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "yellow":
 				        	    					defColor = "&e";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "green":
 				        	    					defColor = "&2";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "lime":
 				        	    					defColor = "&a";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "aqua":
 				        	    					defColor = "&b";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "darkaqua":
 				        	    					defColor = "&3";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "darkblue":
 				        	    					defColor = "&1";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "blue":
 				        	    					defColor = "&9";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "lightpurple":
 				        	    					defColor = "&d";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "darkpurple":
 				        	    					defColor = "&5";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "white":
-				        	    					defColor = "&6";
+				        	    					defColor = "&f";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "lightgray":
 				        	    					defColor = "&7";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "darkgray":
 				        	    					defColor = "&8";
+				        	    					setDefColor(player, args);
+				        	    					return true;
 				        	    				case "black":
 				        	    					defColor = "&0";
-				        	    				default:
 				        	    					setDefColor(player, args);
-				        	    					if ( !defColor.equals(oldColor) ) {
-					        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FDM's default message color is now set to " 
-					        	    										+ args[1] + ".");
-				        	    					} else {
-				        	    						player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | Color not recognized!");
-				        	    					}
 				        	    					return true;
+				        	    					
+				        	    				default:
+				        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | Color not recognized!");
+				        	    					return true;
+			        	    					
 			        	    				}
-			        	    				
 			        	    			
 		        	    				default:
 		        	    					player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY + " | FunnyDeathMessages | Argument not recognized.\"");
@@ -228,7 +265,7 @@ public class Main extends JavaPlugin {
 		        	    			
 		        	    		default:
 		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY 
-		        	    								+ " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.6)");
+		        	    								+ " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.6.1)");
 		        	    			return true;
 		        	    	
 		        	    	}
