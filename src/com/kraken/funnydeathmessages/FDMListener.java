@@ -3,7 +3,6 @@ package com.kraken.funnydeathmessages;
 import java.util.WeakHashMap;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,9 +30,8 @@ public class FDMListener implements Listener {
 		if ( e.getEntity() instanceof Player ) {
 			
 			Player player = (Player) e.getEntity();
-			Entity damager = e.getDamager();
 				
-			damages.put( player, damager.getType().toString() );
+			damages.put( player, "PLAYER" );
 			
 		}
 		
@@ -66,16 +64,20 @@ public class FDMListener implements Listener {
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		
 		Player player = (Player) e.getEntity();
+		String damager = damages.get(player);
 		
 		if ( plugin.enabled() ) {
 			
+		  //Increment player's recent death count
 			Integer deaths = deathCount.get(player);
+			
 			if ( deaths == null ) {
 				deathCount.put(player, 1);
 			} else {
 				deathCount.put(player, deaths + 1);
 			}
 			
+		  //Decrement player's recent death count after 5 minutes
 			plugin.getServer().getScheduler().scheduleSyncDelayedTask( plugin, new Runnable() {
 
 	            public void run() {
@@ -87,7 +89,15 @@ public class FDMListener implements Listener {
 
 	        }, 6000 );
 			
-			e.setDeathMessage( format( plugin.getDefColor() + deathMsgGen(player) ) );
+		  //If killed by a player, get the killer's name
+			String killer = "N/A";
+			
+			if ( damager.equals("PLAYER") ) {
+				killer = player.getKiller().getName();
+			}
+			
+		  //Set the player's death message
+			e.setDeathMessage( format( plugin.getDefColor() + deathMsgGen(player, damager, killer) ) );
 			
 		}
 		
@@ -99,16 +109,15 @@ public class FDMListener implements Listener {
 	    
     }
 	
-	public String deathMsgGen(Player player) {
+	public String deathMsgGen(Player player, String damager, String killer) {
 		
-		String damager = damages.get(player);
 		DeathMessages dm = new DeathMessages();
 		Integer deaths = deathCount.get(player);
 		
 		if ( deaths == 3 ) {
-			return dm.getSpreeMessage(player, damager, deaths);
+			return dm.getSpreeMessage(player, damager, killer, deaths);
 		} else {
-			return dm.getMessage(player, damager);
+			return dm.getMessage(player, damager, killer);
 		}
 		
 	}
