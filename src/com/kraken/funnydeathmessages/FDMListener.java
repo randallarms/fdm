@@ -30,8 +30,8 @@ public class FDMListener implements Listener {
 		if ( e.getEntity() instanceof Player ) {
 			
 			Player player = (Player) e.getEntity();
-				
-			damages.put( player, "PLAYER" );
+			
+			damages.put( player, e.getDamager().getType().toString() );
 			
 		}
 		
