@@ -1,5 +1,5 @@
 // ==========================================================================
-// |FUNNY DEATH MESSAGES v1.6.1
+// |FUNNY DEATH MESSAGES v1.7
 // | by Kraken | https://www.spigotmc.org/resources/funnydeathmessages.35291/
 // | code inspired by various Bukkit & Spigot devs -- thank you. 
 // |
@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
         }
         
         if ( getConfig().getString("defColor") == null ) {
-        	getConfig().set("defColor", "&6");
+        	getConfig().set("defColor", "&f");
         	saveConfig();
         }
         
@@ -265,7 +265,7 @@ public class Main extends JavaPlugin {
 		        	    			
 		        	    		default:
 		        	    			player.sendMessage(ChatColor.RED + "[FDM]" + ChatColor.GRAY 
-		        	    								+ " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.6.1)");
+		        	    								+ " | FunnyDeathMessages | Laughter is the best medicine, so yuck it up (v1.7)");
 		        	    			return true;
 		        	    	
 		        	    	}

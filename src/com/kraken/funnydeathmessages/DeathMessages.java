@@ -13,12 +13,18 @@ public class DeathMessages {
 	}
 	
 	public static String fdmFormat(String msg, Player player){
-		
-	    return String.format( msg, player.getName() );
+
+		return String.format( msg, player.getName() );
 	    
     }
 	
-	public String getSpreeMessage(Player player, String damager, Integer deaths){
+	public static String fdmPvpFormat(String msg, Player player, String killer) {
+
+		return String.format( msg, player.getName(), killer );
+	    
+	}
+	
+	public String getSpreeMessage(Player player, String damager, String killer, Integer deaths){
 		
 	    File messagesFile = new File("plugins/FunnyDeathMessages", "messages.yml");
 	    FileConfiguration messages = YamlConfiguration.loadConfiguration(messagesFile);
@@ -68,7 +74,6 @@ public class DeathMessages {
 			case "MAGMA_CUBE":
 			case "MELTING":
 			case "PIG_ZOMBIE":
-			case "PLAYER":
 			case "POISON":
 			case "POLAR_BEAR":
 			case "PROJECTILE":
@@ -97,6 +102,11 @@ public class DeathMessages {
 				message = ( message + " " + fdmFormat(messages.getString(damager + ".message"), player) );
 				break;
 				
+			case "PLAYER":
+				
+				message = ( message + " " + fdmPvpFormat(messages.getString(damager + ".message"), player, killer) );
+				break;
+				
 			default:
 				
 				message = ( message + " " +  fdmFormat(messages.getString("DEFAULT.message"), player) );
@@ -108,7 +118,7 @@ public class DeathMessages {
 		
 	}
 	
-	public String getMessage(Player player, String damager){
+	public String getMessage(Player player, String damager, String killer){
 		
 	    File messagesFile = new File("plugins/FunnyDeathMessages", "messages.yml");
 	    FileConfiguration messages = YamlConfiguration.loadConfiguration(messagesFile);
@@ -152,7 +162,6 @@ public class DeathMessages {
 			case "MAGMA_CUBE":
 			case "MELTING":
 			case "PIG_ZOMBIE":
-			case "PLAYER":
 			case "POISON":
 			case "POLAR_BEAR":
 			case "PROJECTILE":
@@ -179,6 +188,11 @@ public class DeathMessages {
 			case "ZOMBIE_VILLAGER":
 				
 				message = ( fdmFormat(messages.getString(damager + ".message"), player) );
+				break;
+				
+			case "PLAYER":
+				
+				message = ( fdmPvpFormat(messages.getString(damager + ".message"), player, killer) );
 				break;
 				
 			default:

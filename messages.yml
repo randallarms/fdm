@@ -66,11 +66,11 @@ MAGIC:
 MAGMA_CUBE:
     message: "%s was assimilated into the magma cube!"
 MELTING:
-    message: "% sis apparently a snowman and has melted, who knew?"
+    message: "%s is apparently a snowman and has melted, who knew?"
 PIG_ZOMBIE:
     message: "%s is about to have a really hard time in the Nether!"
 PLAYER:
-    message: "%s just got a straight-up slap-down whack-a-mole bee-bop doo-wop boppin' on the noodle-noggin', yo!"
+    message: "%s just got a straight-up slap-down whack-a-mole bee-bop doo-wop boppin' on the noodle-noggin by %s, yo!"
 POISON:
     message: "%s has suffered a slow and terrible death by poisoning -- the death of choice by historic emperors!"
 POLAR_BEAR:
