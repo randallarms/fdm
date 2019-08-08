@@ -1,9 +1,8 @@
-#FunnyDeathMessages
-Kraken | https://www.spigotmc.org/resources/funnydeathmessages.35291/
+# FunnyDeathMessages
 
 A simple Minecraft Bukkit/Spigot plugin to replace default death messages with silly versions (MCv1.11.2).
 
-HOW TO INSTALL AND USE: https://www.spigotmc.org/threads/funnydeathmessages.211909/
+Edit the messages.yml file to customize the death messages.
 
 The plugin has no dependencies and will likely have no effect on any other plugins already installed! Always back-up to be sure, though.
 
