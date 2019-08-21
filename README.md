@@ -4,6 +4,12 @@ A simple Minecraft Bukkit/Spigot plugin to replace default death messages with s
 
 Edit the messages.yml file to customize the death messages.
 
+commands:
+
+     fdm:
+        description: Info on the FunnyDeathMessages plugin.
+        usage: /<command>
+
 The plugin has no dependencies and will likely have no effect on any other plugins already installed! Always back-up to be sure, though.
 
 Any forks, branches, and pull requests are welcome! Please feel free to voice criticism to better the project, as well.
